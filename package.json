@@ -87,7 +87,7 @@
                 "title": "AddNg2Files: Spec"
             }
         ],
-	    //https://github.com/natewallace/language-vscode-javascript-angular2
+	    "grammarsGIT":"//https://github.com/natewallace/language-vscode-javascript-angular2",
         "grammars": [
             {
                 "scopeName": "template.ng",
@@ -106,7 +106,7 @@
                 ]
             }
         ],
-        //https://github.com/johnpapa/vscode-angular2-snippets
+        "snippetsGIT":"https://github.com/johnpapa/vscode-angular2-snippets",
         "snippets": [
             {
                 "language": "typescript",
