@@ -1,0 +1,51 @@
+{
+    "name": "vscode-angular2-typescript-helper",
+    "displayName": "Angular 2 Typescript Helper",
+    "description": "Angular 2 Typescript Helper including ng2 snippets to your Visual Studio Code project",
+    "version": "1.0.0",
+    "icon": "images/icon.png",
+    "publisher": "FrontY",
+    "author": {
+        "name": "FrontY"
+    },
+    "engines": {
+        "vscode": "^1.4.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/winpzs/angular2-typescript-helper"
+    },
+    "bugs": {
+        "url": "https://github.com/winpzs/angular2-typescript-helper/issues"
+    },
+    "categories": [
+        "Other",
+        "Languages",
+        "Snippets"
+    ],
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.Angular2TypescriptHelperAddFiles",
+                "title": "AddNg2Files: Default"
+            }
+        ]
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "rimraf": "^2.4.4",
+        "vscode": "^0.11.0"
+    },
+    "dependencies": {
+        "q": "^1.4.1"
+    }
+}
