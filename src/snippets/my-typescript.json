@@ -1,0 +1,13 @@
+{
+  "Angular GetSet": {
+    "prefix": "ng2-getset",
+    "description": "Angular 2 Module snippet",
+    "body": ["\tprivate _${name}:${type};",
+        "\tpublic get ${name}():${type}{",
+        "\t\treturn this._${name};",
+        "\t}",
+        "\tpublic set ${name}(value:${type}){",
+        "\t\tthis._${name} = value;",
+        "\t}"]
+  }
+}

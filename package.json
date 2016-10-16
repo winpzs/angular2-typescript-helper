@@ -86,7 +86,44 @@
                 "command": "extension.Angular2TypescriptHelperAddFilesSpec",
                 "title": "AddNg2Files: Spec"
             }
+        ],
+	    //https://github.com/natewallace/language-vscode-javascript-angular2
+        "grammars": [
+            {
+                "scopeName": "template.ng",
+                "path": "./src/syntaxes/template.ng.json",
+                "injectTo": [
+                    "source.js",
+                    "source.ts"
+                ]
+            },
+            {
+                "scopeName": "styles.ng",
+                "path": "./src/syntaxes/styles.ng.json",
+                "injectTo": [
+                    "source.js",
+                    "source.ts"
+                ]
+            }
+        ],
+        //https://github.com/johnpapa/vscode-angular2-snippets
+        "snippets": [
+            {
+                "language": "typescript",
+                "path": "./src/snippets/typescript.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./src/snippets/my-typescript.json"
+            },
+            {
+                "language": "html",
+                "path": "./src/snippets/html.json"
+            }
         ]
+    },
+    "galleryBanner": {
+        "color": "#99C3D7"
     },
     "devDependencies": {
         "typescript": "^1.8.5",
