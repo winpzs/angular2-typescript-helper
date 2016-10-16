@@ -91,7 +91,7 @@
         "grammars": [
             {
                 "scopeName": "template.ng",
-                "path": "./src/syntaxes/template.ng.json",
+                "path": "./syntaxes/template.ng.json",
                 "injectTo": [
                     "source.js",
                     "source.ts"
@@ -99,7 +99,7 @@
             },
             {
                 "scopeName": "styles.ng",
-                "path": "./src/syntaxes/styles.ng.json",
+                "path": "./syntaxes/styles.ng.json",
                 "injectTo": [
                     "source.js",
                     "source.ts"
@@ -110,15 +110,15 @@
         "snippets": [
             {
                 "language": "typescript",
-                "path": "./src/snippets/typescript.json"
+                "path": "./snippets/typescript.json"
             },
             {
                 "language": "typescript",
-                "path": "./src/snippets/my-typescript.json"
+                "path": "./snippets/my-typescript.json"
             },
             {
                 "language": "html",
-                "path": "./src/snippets/html.json"
+                "path": "./snippets/html.json"
             }
         ]
     },

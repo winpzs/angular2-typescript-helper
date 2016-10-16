@@ -25,7 +25,7 @@ export class FileContentsExtended {
             "\tmoduleId: module.id,\n" +
             "\tselector: '" + inputName + "',\n" +
             "\tstyleUrls:['" + inputName + ".component.css'],\n" +
-            "\ttemplateUrl: '" + inputName + ".component.html',\n" +
+            "\ttemplateUrl: '" + inputName + ".component.html'\n" +
             "})\n" +
             "\n" +
             "export class " + inputUpperCase + "Component implements OnInit {\n" +
