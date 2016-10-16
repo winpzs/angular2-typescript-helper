@@ -18,5 +18,19 @@ export function activate(context: ExtensionContext) {
       });
   });
 
+  var addAngular2FilesExtended = commands.registerCommand('extension.Angular2TypescriptHelperAddFilesComponent', (args) => {
+    const addFilesExtended: AddFilesExtended = new AddFilesExtended();
+    addFilesExtended.showFileNameDialog(args)
+      .then(addFilesExtended.transInput)
+      .then(addFilesExtended.createFolder)
+      .then(addFilesExtended.createFiles)
+      .then(addFilesExtended.openFileInEditor)
+      .catch((err) => {
+        if (err) {
+          window.showErrorMessage(err);
+        }
+      });
+  });
+
   context.subscriptions.push(addAngular2FilesExtended);
 }

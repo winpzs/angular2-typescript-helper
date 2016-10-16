@@ -37,6 +37,10 @@
             {
                 "command": "extension.Angular2TypescriptHelperAddFiles",
                 "title": "AddNg2Files: Default"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesComponent",
+                "title": "AddNg2Files: Component"
             }
         ]
     },
