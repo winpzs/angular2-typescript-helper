@@ -133,9 +133,9 @@ export class AddFilesExtended {
   }
 
   // Get file contents and create the new files in the folder 
-  public createFiles(input:IInput): Q.Promise<IInput> {
+  public createFiles(input:IInput): Q.Promise<string> {
     var folderName:string = input.path;
-    const deferred: Q.Deferred<IInput> = Q.defer<IInput>();
+    const deferred: Q.Deferred<string> = Q.defer<string>();
     var fileName: string = input.fileName;
     const fc: FileContentsExtended = new FileContentsExtended();
     const afe: AddFilesExtended = new AddFilesExtended();
@@ -198,7 +198,7 @@ export class AddFilesExtended {
         window.showErrorMessage(`${errors.length} file(s) could not be created. I'm sorry :-(`);
       }
       else {
-        deferred.resolve(input);
+        deferred.resolve(files[0].name);
       }
     });
 
@@ -208,15 +208,18 @@ export class AddFilesExtended {
 
   // Show input prompt for folder name 
   // The imput is also used to create the files with the respective name as defined in the Angular2 style guide [https://angular.io/docs/ts/latest/guide/style-guide.html] 
-  public showFileNameDialog(args): Q.Promise<string> {
+  public showFileNameDialog(args, menuPath:string): Q.Promise<string> {
     const deferred: Q.Deferred<string> = Q.defer<string>();
 
     var clickedFolderPath: string, fileName:string;
     if (args) {
-      clickedFolderPath = args.fsPath
+      clickedFolderPath = args.fsPath;
       fileName = path.basename(clickedFolderPath);
     }
-    else {
+    else if (menuPath) {
+      clickedFolderPath = menuPath;
+      fileName = path.basename(clickedFolderPath);
+    } else {
       if (!window.activeTextEditor) {
         deferred.reject('Please open a file first.. or just right-click on a file/folder and use the context menu!');
         return deferred.promise;
@@ -258,19 +261,20 @@ export class AddFilesExtended {
     const deferred: Q.Deferred<string[]> = Q.defer<string[]>();
     var errors: string[] = []; 
     files.forEach(file => {
-      fs.writeFile(file.name, file.content, (err) => {
-          if (err) { errors.push(err.message) }          
-          deferred.resolve(errors);
-        });
+      if (!fs.existsSync(file.name))
+        fs.writeFile(file.name, file.content, (err) => {
+            if (err) { errors.push(err.message) }          
+            deferred.resolve(errors);
+          });
     });
     return deferred.promise;
   }
 
   // Open the created component in the editor
-  public openFileInEditor(folderName): Q.Promise<TextEditor> {
+  public openFileInEditor(fullFilePath): Q.Promise<TextEditor> {
     const deferred: Q.Deferred<TextEditor> = Q.defer<TextEditor>();
-    var inputName: string = path.parse(folderName).name;;
-    var fullFilePath: string = path.join(folderName, `${inputName}.component.ts`);
+    // var inputName: string = path.parse(folderName).name;;
+    // var fullFilePath: string = path.join(folderName, `${inputName}.component.ts`);
 
     workspace.openTextDocument(fullFilePath).then((textDocument) => {
       if (!textDocument) { return; }

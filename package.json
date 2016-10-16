@@ -26,13 +26,25 @@
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
         "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install"
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "vsce:package":"vsce package",
+        "vsce:publish":"vsce publish"
     },
     "activationEvents": [
         "*"
     ],
     "main": "./out/src/extension",
     "contributes": {
+        "menus": {
+            "explorer/context": [
+                {
+                    "when":"",
+                    "command": "extension.Angular2TypescriptHelperAddFilesMenu",
+                    "title": "Add Angular 2 Files",
+                    "group": "AddNg2Files"
+                }
+            ]
+        },
         "commands": [
             {
                 "command": "extension.Angular2TypescriptHelperAddFiles",
@@ -40,7 +52,8 @@
             },
             {
                 "command": "extension.Angular2TypescriptHelperAddFilesComponentTHC",
-                "title": "AddNg2Files: Components (ts, html and css)"
+                "title": "AddNg2Files: Components (ts, html and css)",
+                "description": "ts, html and css"
             },
             {
                 "command": "extension.Angular2TypescriptHelperAddFilesComponentTHCMS",
@@ -85,6 +98,10 @@
             {
                 "command": "extension.Angular2TypescriptHelperAddFilesSpec",
                 "title": "AddNg2Files: Spec"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesMenu",
+                "title": "Add Angular 2 Files"
             }
         ],
 	    "grammarsGIT":"//https://github.com/natewallace/language-vscode-javascript-angular2",
