@@ -39,8 +39,52 @@
                 "title": "AddNg2Files: Default"
             },
             {
+                "command": "extension.Angular2TypescriptHelperAddFilesComponentTHC",
+                "title": "AddNg2Files: Components (ts, html and css)"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesComponentTHCMS",
+                "title": "AddNg2Files: Components Full (ts, html, css, shared/service and model)"
+            },
+            {
                 "command": "extension.Angular2TypescriptHelperAddFilesComponent",
                 "title": "AddNg2Files: Component"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesTemplate",
+                "title": "AddNg2Files: Template"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesStyle",
+                "title": "AddNg2Files: Style CSS"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesAll",
+                "title": "AddNg2Files: All (component, module, routing, service and model)"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesModule",
+                "title": "AddNg2Files: Module"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesRouting",
+                "title": "AddNg2Files: Routing"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesShared",
+                "title": "AddNg2Files: Shared (service and model)"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesService",
+                "title": "AddNg2Files: Service"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesModel",
+                "title": "AddNg2Files: Model"
+            },
+            {
+                "command": "extension.Angular2TypescriptHelperAddFilesSpec",
+                "title": "AddNg2Files: Spec"
             }
         ]
     },

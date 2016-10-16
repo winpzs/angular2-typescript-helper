@@ -168,13 +168,13 @@ export class AddFilesExtended {
     }
     if (input.service){
       files.push({
-        name: input.shared ? path.join(folderName, 'shared', `${fileName}.service.ts`) : `${fileName}.service.ts`,
+        name: input.shared ? path.join(folderName, 'shared', `${fileName}.service.ts`) : path.join(folderName, `${fileName}.service.ts`),
         content: fc.serviceContent(fileName)
       });
     }
     if (input.model){
       files.push({
-        name:input.shared ? path.join(folderName, 'shared', `${fileName}.model.ts`) : `${fileName}.model.ts`,
+        name:input.shared ? path.join(folderName, 'shared', `${fileName}.model.ts`) : path.join(folderName,`${fileName}.model.ts`),
         content: fc.modelContent(fileName)
       });
     }
@@ -211,9 +211,10 @@ export class AddFilesExtended {
   public showFileNameDialog(args): Q.Promise<string> {
     const deferred: Q.Deferred<string> = Q.defer<string>();
 
-    var clickedFolderPath: string;
+    var clickedFolderPath: string, fileName:string;
     if (args) {
       clickedFolderPath = args.fsPath
+      fileName = path.basename(clickedFolderPath);
     }
     else {
       if (!window.activeTextEditor) {
@@ -221,21 +222,28 @@ export class AddFilesExtended {
         return deferred.promise;
       } else {
         clickedFolderPath = path.dirname(window.activeTextEditor.document.fileName);
+        fileName = path.basename(window.activeTextEditor.document.fileName);
       }
     }
     var newFolderPath: string = fs.lstatSync(clickedFolderPath).isDirectory() ? clickedFolderPath : path.dirname(clickedFolderPath);
+
+
+    let inputs = fileName.split('.'),
+        inputName = inputs.length > 0 ? inputs[0] : fileName;
 
     if (workspace.rootPath === undefined) {
       deferred.reject('Please open a project first. Thanks! :-)');
     }
     else {
       window.showInputBox({
-        prompt: 'What\'s the name of the new folder?',
-        value: 'folder'
+        prompt: 'What\'s the name of the new ng2 files?',
+        value: inputName
       }).then(
         (fileName) => {
-          if (!fileName || /[~`!#$%\^&*+=\[\]\\';,{}|\\":<>\?]/g.test(fileName)) {
-            deferred.reject('That\'s not a valid name! (no whitespaces or special characters)');
+          if (!fileName)
+            deferred.reject('');
+          else if (/[~`!#$%\^&*+=\[\]\\';,{}|\\":<>\?]/g.test(fileName)) {
+            deferred.reject('That\'s not a valid name! (special characters)');
           } else {
             deferred.resolve(path.join(newFolderPath, fileName));
           }
