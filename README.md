@@ -13,8 +13,9 @@ This extension allows you to add **Angular2 typescript files including snippets*
 
 ### Add Angular2 Files
 
-let's assume you typed in `AddNg2Files:`
-
+1. `Ctrl + Shift + p:` typed in `AddNg2Files:`
+2. This extension for Visual Studio Code adds snippets for Angular 2 for TypeScript and HTML.
+3. When you define an inline template or inline style sheet using the backtick character(` ) the content will be highlighted.
 
 # Contributors
 
