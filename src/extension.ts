@@ -115,7 +115,7 @@ export function activate(context: ExtensionContext) {
 
 
   context.subscriptions.push(commands.registerCommand('extension.Angular2TypescriptHelperAddFilesMenu', function (arg) {
-        menuPath = arg.fsPath;
+        menuPath = arg ? arg.fsPath : (window.activeTextEditor ? window.activeTextEditor.document.fileName : '');
         window.showQuickPick([
             <QuickPickItem>{
                 label: 'Components (ts, html and css)'
