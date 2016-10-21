@@ -2,7 +2,7 @@
     "name": "vscode-angular2-typescript-helper",
     "displayName": "Angular 2 Typescript Helper",
     "description": "Angular 2 Typescript Helper including ng2 snippets to your Visual Studio Code project",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icon": "images/icon.png",
     "publisher": "FrontY",
     "author": {
@@ -37,6 +37,14 @@
     "contributes": {
         "menus": {
             "explorer/context": [
+                {
+                    "when":"",
+                    "command": "extension.Angular2TypescriptHelperAddFilesMenu",
+                    "title": "Add Angular 2 Files",
+                    "group": "AddNg2Files"
+                }
+            ],
+            "editor/context": [
                 {
                     "when":"",
                     "command": "extension.Angular2TypescriptHelperAddFilesMenu",

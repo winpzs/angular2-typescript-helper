@@ -99,6 +99,12 @@ export function activate(context: ExtensionContext) {
       .then(function(input:string){return addFilesExtended.transInput(input + ' --css');}));
   });
 
+  var addAngular2FilesMRC = (args?:any) =>{
+       const addFilesExtended: AddFilesExtended = new AddFilesExtended();
+        sharedPromise(addFilesExtended, addFilesExtended.showFileNameDialog(args, menuPath)
+        .then(function(input:string){return addFilesExtended.transInput(input + ' --c M r');}));
+  };
+
   context.subscriptions.push(addAngular2FilesExtended);
   context.subscriptions.push(addAngular2FilesComponent);
   context.subscriptions.push(addAngular2FilesComponentTHC);
@@ -118,16 +124,19 @@ export function activate(context: ExtensionContext) {
         menuPath = arg ? arg.fsPath : (window.activeTextEditor ? window.activeTextEditor.document.fileName : '');
         window.showQuickPick([
             <QuickPickItem>{
-                label: 'Components (ts, html and css)'
-            },
-            <QuickPickItem>{
-                label: 'Shared (service and model)'
-            },
-            <QuickPickItem>{
                 label: 'Components Full (ts, html, css, shared/service and model)'
             },
             <QuickPickItem>{
                 label: 'All (component, module, routing, service and model)'
+            },
+            <QuickPickItem>{
+                label: 'Components (ts, html and css)'
+            },
+            <QuickPickItem>{
+                label: 'Modules (component, module and routing)'
+            },
+            <QuickPickItem>{
+                label: 'Shared (service and model)'
             },
             <QuickPickItem>{
                 label: 'Component'
@@ -176,6 +185,8 @@ export function activate(context: ExtensionContext) {
                 commands.executeCommand('extension.Angular2TypescriptHelperAddFilesRouting');
             } else if (result && result.label.indexOf('Spec') !== -1) {
                 commands.executeCommand('extension.Angular2TypescriptHelperAddFilesSpec');
+            } else if (result && result.label.indexOf('Modules (component, module and routing)') !== -1) {
+                addAngular2FilesMRC();
             }
         });
     }));

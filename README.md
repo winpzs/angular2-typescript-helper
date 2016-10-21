@@ -6,10 +6,39 @@ This extension allows you to add **Angular2 typescript files including snippets*
 
 > Inspired by [Sebastian Baar](https://github.com/sebastianbaar)'s [Angular2 Add Files for VS Code](https://github.com/sebastianbaar/vscode-add-angular2-files).
 
+## Install and Package
+
+
+### Install
+
+```
+npm install -g vsce
+npm install
+```
+
+### Package
+
+```
+npm run vsce:package
+```
+
+### Publish
+
+```
+npm run vsce:publish
+```
+
 ## Changelog
+
+### 1.0.1
+
+**Add Menu to editor/context** 
+
+**Add Modules (component, module and routing)** 
 
 ### 1.0.0
 **Now Updated for Angular 2.0.0 release** 
+
 
 ### Add Angular2 Files
 
